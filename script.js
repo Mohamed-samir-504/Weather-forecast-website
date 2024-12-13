@@ -18,9 +18,9 @@ api_key = 'b038e5c1e62eb88030ec57464634b8a5';
 //console.log(humidity_value.innerHTML);
 
 function getWeatherDetails(name,lat,lon,country,state){
-    let FORECAST_API_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`,
-    WEATHER_API_URL = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`,
-    AIR_POLLUTION_API = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${api_key}`
+    let FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`,
+    WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`,
+    AIR_POLLUTION_API = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${api_key}`
     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
     aqi_gases = ["co","nh3","no","no2","o3","pm2_5","pm10","so2"],
@@ -186,7 +186,7 @@ function getCityCoordinates(){
 
     if(!cityName) return;
     console.log(cityName);
-    let GEOCODING_API_URL = `http://api.openweathermap.org/geo/1.0/direct?q='${cityName}&limit=1&appid=${api_key}`;
+    let GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q='${cityName}&limit=1&appid=${api_key}`;
 
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
         // console.log(data);
@@ -202,7 +202,7 @@ function getCityCoordinates(){
 function getUserCoordinates(){
     navigator.geolocation.getCurrentPosition(position =>{
         let {latitude, longitude} = position.coords;
-        let REVERSE_GEOCODING_API_URL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_key}`;
+        let REVERSE_GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_key}`;
 
         fetch(REVERSE_GEOCODING_API_URL).then(res => res.json()).then(data => {
             let {name,country,state} = data[0];
